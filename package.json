@@ -1,16 +1,23 @@
 {
-  "name": "Elastic-Beanstalk-Sample-App",
+  "name": "elastic-beanstalk-sample-app",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "pug": "2.0.0-beta11",
+    "@tailwindcss/forms": "^0.3.2",
+    "autoprefixer": "^10.2.5",
+    "aws-sdk": "^2.891.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
     "http": "0.0.0",
-    "aws-sdk": "2.9.0",
-    "express": "4.14.0",
-    "body-parser": "1.16.0",
-    "querystring": "0.2.0"
+    "jquery": "^3.6.0",
+    "jsdom": "^16.5.3",
+    "postcss": "^8.2.12",
+    "postcss-cli": "^8.3.1",
+    "querystring": "0.2.0",
+    "tailwindcss": "^2.1.1"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css"
   }
 }

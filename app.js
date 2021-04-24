@@ -1,27 +1,28 @@
 // Load the AWS SDK
-var AWS = require('aws-sdk')
-
-var express = require('express')
-var bodyParser = require('body-parser')
+const AWS = require('aws-sdk')
+const path = require('path')
+const express = require('express')
+const ejs = require('ejs');
 
 // Set region for AWS SDKs
 AWS.config.region = process.env.REGION
 
-var app = express()
+const app = express()
 
-app.set('view engine', 'pug')
-app.set('views', __dirname + '/views')
-app.use(bodyParser.urlencoded({extended:false}))
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.urlencoded({ extended: false }))
 
-app.get('/', function (req, res) {
-  res.render('index', {
-    title: 'BackSpace Academy & Elastic Beanstalk'
-    })
-    res.status(200).end();
+app.get('/', (req, res) => {
+  res.render('pages/index', {
+    title: 'Jossendal Development & Elastic Beanstalk on AWS'
+  })
+  res.status(200).end()
 })
 
-var port = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 
-var server = app.listen(port, function () {
-  console.log('Server running at http://127.0.0.1:' + port + '/')
+const server = app.listen(port, () => {
+  console.log(`Server running at http://127.0.0.1:${port}/`)
 })
